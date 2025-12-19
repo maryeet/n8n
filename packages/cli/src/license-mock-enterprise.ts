@@ -70,7 +70,7 @@ export class EnterpriseLicenseMocker {
 		license.isSourceControlLicensed = () => true;
 		license.isVariablesEnabled = () => true;
 		license.isExternalSecretsEnabled = () => true;
-		license.isWorkflowHistoryLicensed = () => true;
+		//license.isWorkflowHistoryLicensed = () => true;
 		license.isLogStreamingEnabled = () => true;
 		license.isMultiMainLicensed = () => true;
 		license.isBinaryDataS3Licensed = () => true;
