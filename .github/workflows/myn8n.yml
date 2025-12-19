@@ -93,8 +93,8 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push n8n Docker image
-        uses: docker/build-push-action@v4
-        #uses: useblacksmith/build-push-action@30c71162f16ea2c27c3e21523255d209b8b538c1 # v2
+        #uses: docker/build-push-action@v4
+        uses: useblacksmith/build-push-action@30c71162f16ea2c27c3e21523255d209b8b538c1 # v2
         with:
           context: .
           file: ./docker/images/n8n/Dockerfile
