@@ -52,6 +52,12 @@ on:
         description: 'URL to call after the build is successful'
         required: false
         type: string
+      image_name:
+        description: docker image name'
+        required: false
+        type: string
+        default: 'myn8n'
+
 
 jobs:
   determine-build-context:
