@@ -30,6 +30,7 @@ import { TestRunCleanupService } from '@/evaluation.ee/test-runner/test-run-clea
 import { MessageEventBus } from '@/eventbus/message-event-bus/message-event-bus';
 import { TelemetryEventRelay } from '@/events/relays/telemetry.event-relay';
 import { ExternalHooks } from '@/external-hooks';
+import { initEnterpriseMock } from '@/init-enterprise-mock';
 import { License } from '@/license';
 import { CommunityPackagesConfig } from '@/modules/community-packages/community-packages.config';
 import { NodeTypes } from '@/node-types';
@@ -164,6 +165,8 @@ export abstract class BaseCommand<F = never> {
 
 		await Container.get(PostHogClient).init();
 		await Container.get(TelemetryEventRelay).init();
+
+		await this.initLicense();
 	}
 
 	protected async stopProcess() {
@@ -266,6 +269,10 @@ export abstract class BaseCommand<F = never> {
 				const error = ensureError(e);
 				this.logger.error('Could not activate license', { error });
 			}
+			// 企业版功能模拟
+		    if (process.env.N8N_ENTERPRISE_MOCK === 'true') {
+			    await initEnterpriseMock();
+		    }
 		}
 	}
 
